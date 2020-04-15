@@ -15,11 +15,11 @@
     "lint": "tslint -c tslint.json '{src,test}/**/*.ts'",
     "postinstall": "npm run compile",
     "dev": "concurrently 'npm run compile:watch' 'npm run start:watch'",
-    "start": "node  --require source-map-support/register ./dist/app.js",
+    "start": "node  ./dist/app.js",
     "start:watch": "nodemon -w dist -e js --exec 'npm run start'",
     "pretest": "npm run compile",
     "test": "npm run mocha",
-    "mocha": "NODE_ENV=test mocha --exit --require source-map-support/register --require ./dist/test/init.js --recursive ./dist/test --timeout 10000"
+    "mocha": "NODE_ENV=test mocha --exit --require  ./dist/test/init.js --recursive ./dist/test --timeout 10000"
   },
   "dependencies": {
     "@types/xml": "^1.0.4",
