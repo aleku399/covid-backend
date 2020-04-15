@@ -13,6 +13,7 @@
     "compile:watch": "npm run compile -- --watch",
     "compile-tests": "tsc --p ./test",
     "lint": "tslint -c tslint.json '{src,test}/**/*.ts'",
+    "postinstall": "npm run compile",
     "dev": "concurrently 'npm run compile:watch' 'npm run start:watch'",
     "start": "node  --require source-map-support/register ./dist/app.js",
     "start:watch": "nodemon -w dist -e js --exec 'npm run start'",
