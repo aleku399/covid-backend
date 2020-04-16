@@ -1,3 +1,5 @@
+require("dotenv-safe").config();
+
 import * as bodyParser from "body-parser";
 import * as compression from "compression";
 import * as express from "express";
@@ -11,7 +13,11 @@ import routers from "./routers";
 
 const app = express();
 
-const port = 4001;
+let port = String(4001);
+
+if (port === null) {
+  port = process.env.port;
+}
 
 app.set("trust proxy", "loopback");
 app.use(compression());
@@ -38,6 +44,6 @@ app.post("/api/v1/on-covid-19", (req, res, next) => {
     .catch(next);
 });
 
-app.listen(port, () => {
-  console.info(`Listening on http://localhost:${port}. Press CTRL-C to stop\n`);
+app.listen(process.env.port, () => {
+  console.info(`Listening on http://localhost:${process.env.port}. Press CTRL-C to stop\n`);
 });
